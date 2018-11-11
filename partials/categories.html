@@ -1,0 +1,28 @@
+<h4 class="blog-post-title">Category</h4>
+<hr/>
+<button type="button" class="btn btn-danger fa fa-plus" ng-click="open(category);">&nbsp;Add New Category</button>
+<p></p>
+
+<div class="table-responsive">
+    <div class="panel panel-primary">
+          <div class="panel-body">
+                <table class="table table-striped">
+                    <tr ng-show="categories.length==0"><td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;No categories found</td></tr>
+                    <tr ng-hide="categories.length>-1"><td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading Categories</td></tr>
+                    
+                    <tr><th ng-repeat="c in columns">{{c.text}}</th></tr>
+
+                    <tr ng-repeat="c in categories | filter:filterCategory | orderBy:'id'" id="{{c.id}}" animate-on-change='c.id + c.name' ng-animate=" 'animate'">
+                        <td>{{c.id}}</td><td>{{c.name}}</td>
+                        <td style="width:100px">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default fa fa-edit" ng-click="open(c);" >E</button>
+                              <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deleteCategory(c);" >D</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+</div>
+           
